@@ -9,8 +9,11 @@ annual_precip = precip_data %>%
   group_by(YEAR) %>%
   summarize(total_precip_in = sum(PRCP, na.rm=TRUE))
 
+pdf('figures/annual_precip_sums.pdf', width=7, height=5)
 ggplot(data=annual_precip, aes(x=YEAR, y=total_precip_in))+
   geom_bar(stat="identity")+
   xlab("Year")+
   ylab("Total Precipitation (in)")+
   theme_bw()
+dev.off()
+
